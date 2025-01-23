@@ -1,0 +1,2635 @@
+{
+  "name": "Desi Dhaba Chat bot-action",
+  "type": "action",
+  "valid": true,
+  "status": "Available",
+  "created": "2025-01-18T15:23:41.665Z",
+  "updated": "2025-01-23T11:53:57.828Z",
+  "language": "en",
+  "skill_id": "c11c10fd-9508-4693-91c6-907f54959bca",
+  "workspace": {
+    "actions": [
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_940",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "What would you like help with?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "1️⃣ Reservations",
+                      "value": {
+                        "input": {
+                          "text": "1️⃣ Reservations"
+                        }
+                      }
+                    },
+                    {
+                      "label": "2️⃣ Menu inquiries",
+                      "value": {
+                        "input": {
+                          "text": "2️⃣ Menu inquiries"
+                        }
+                      }
+                    },
+                    {
+                      "label": "3️⃣ Special offers and events",
+                      "value": {
+                        "input": {
+                          "text": "3️⃣ Special offers and events"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "context": {
+              "variables": []
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_42477",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_940",
+            "next_step": "step_507"
+          },
+          {
+            "step": "step_507",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Hi "
+                          },
+                          {
+                            "skill_variable": "cus_name"
+                          },
+                          {
+                            "scalar": "! 🎉 We’re hosting a live jazz night on "
+                          },
+                          {
+                            "skill_variable": "day_booking"
+                          },
+                          {
+                            "scalar": " from 7 PM to 10 PM.\n\nWould you like to upgrade your reservation to include premium seating near the stage? Premium seating costs 200rs extra per table"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "1️⃣ \"Yes, upgrade my reservation.\" ",
+                      "value": {
+                        "input": {
+                          "text": "1️⃣ \"Yes, upgrade my reservation.\" "
+                        }
+                      }
+                    },
+                    {
+                      "label": "2️⃣ \"Tell me more about the event.\" ",
+                      "value": {
+                        "input": {
+                          "text": "2️⃣ \"Tell me more about the event.\" "
+                        }
+                      }
+                    },
+                    {
+                      "label": "3️⃣ \"No, thank you.\"",
+                      "value": {
+                        "input": {
+                          "text": "3️⃣ \"No, thank you.\""
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "context": {
+              "variables": []
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_25093",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_507",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "3️⃣ Special offers and events",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_314"
+          },
+          {
+            "step": "step_314",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Done! Your reservation now includes premium seating for the live jazz night. 🎷\n\nLet us know if there’s anything else we can assist you with. Enjoy the show!"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_314",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_507"
+                },
+                {
+                  "value": "1️⃣ \"Yes, upgrade my reservation.\" ",
+                  "from_entity": "entity_25093"
+                }
+              ]
+            },
+            "next_step": "step_355"
+          },
+          {
+            "step": "step_355",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Sure! Our live jazz night features a renowned local band and takes place in a cozy atmosphere with gourmet food and drinks. Premium seating ensures the best views near the stage.\n\nWould you like to upgrade your reservation now?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_355",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_507"
+                },
+                {
+                  "value": "2️⃣ \"Tell me more about the event.\" ",
+                  "from_entity": "entity_25093"
+                }
+              ]
+            },
+            "next_step": "step_265"
+          },
+          {
+            "step": "step_265",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Not a problem! Your current reservation remains unchanged. Let us know if you change your mind or need any other assistance. 😊"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_265",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_507"
+                },
+                {
+                  "value": "3️⃣ \"No, thank you.\"",
+                  "from_entity": "entity_25093"
+                }
+              ]
+            },
+            "next_step": "step_191"
+          },
+          {
+            "step": "step_191",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Great! Let’s book your table. Are you reserving for today or another day?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "response_type": "date",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I'm sorry, I did not catch that, please restate your response."
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "sys-date",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_191",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "1️⃣ Reservations",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_257"
+          },
+          {
+            "step": "step_257",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Great! Can I have your name and contact number and for how many person?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "examples": [
+              {
+                "input": "i am chetan ",
+                "value": "chetan"
+              },
+              {
+                "input": "no is 10",
+                "value": "10"
+              },
+              {
+                "input": "contact 100",
+                "value": "100"
+              }
+            ],
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_257",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "1️⃣ Reservations",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_798"
+          },
+          {
+            "step": "step_798",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "can you specify your contact number please..."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                }
+              ]
+            },
+            "examples": [
+              {
+                "input": "contact is 9172475977",
+                "value": "9172475977"
+              },
+              {
+                "input": "no is 10",
+                "value": "10"
+              },
+              {
+                "input": "ph no 1555",
+                "value": "1555"
+              }
+            ],
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_798",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "1️⃣ Reservations",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_903"
+          },
+          {
+            "step": "step_903",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Can you specify the number of people please..."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Enter a number."
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "sys-number",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_903",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "1️⃣ Reservations",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_415"
+          },
+          {
+            "step": "step_415",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Can you specify the time please..."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I'm sorry, I did not catch that, please restate your response."
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "sys-time",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_415",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "1️⃣ Reservations",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_476"
+          },
+          {
+            "step": "step_476",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Sorry! We have availability  from 6:00 PM to 10:00 PM. What time works best for you?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "context": {
+              "variables": [
+                {
+                  "value": {
+                    "variable": "step_415"
+                  },
+                  "skill_variable": "time"
+                }
+              ]
+            },
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_476",
+            "condition": {
+              "or": [
+                {
+                  "lt": [
+                    {
+                      "variable": "step_415"
+                    },
+                    {
+                      "time": {
+                        "value": "18:00"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "gt": [
+                    {
+                      "variable": "step_415"
+                    },
+                    {
+                      "time": {
+                        "value": "22:00"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "next_step": "step_509"
+          },
+          {
+            "step": "step_509",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Thank you, "
+                          },
+                          {
+                            "skill_variable": "cus_name"
+                          },
+                          {
+                            "scalar": " 🎉 Your table for "
+                          },
+                          {
+                            "skill_variable": "num_people"
+                          },
+                          {
+                            "scalar": " at "
+                          },
+                          {
+                            "variable": "step_415"
+                          },
+                          {
+                            "scalar": "  , "
+                          },
+                          {
+                            "skill_variable": "booking_day"
+                          },
+                          {
+                            "scalar": " is now reserved , your contact no. is  "
+                          },
+                          {
+                            "variable": "step_798"
+                          },
+                          {
+                            "scalar": ".\n\nWould you like any special arrangements? For example:\n\n\n  - A high chair for kids\n  - A wheelchair-accessible table\n  - Anything else?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "context": {
+              "variables": [
+                {
+                  "value": {
+                    "variable": "step_257"
+                  },
+                  "skill_variable": "cus_name"
+                },
+                {
+                  "value": {
+                    "variable": "step_798"
+                  },
+                  "skill_variable": "contact_no"
+                },
+                {
+                  "value": {
+                    "variable": "step_903"
+                  },
+                  "skill_variable": "num_people"
+                },
+                {
+                  "value": {
+                    "variable": "step_191"
+                  },
+                  "skill_variable": "booking_day"
+                }
+              ]
+            },
+            "examples": [
+              {
+                "input": "high chair ",
+                "value": "high chair"
+              },
+              {
+                "input": "wheelchair",
+                "value": "wheelchair"
+              }
+            ],
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_509",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "1️⃣ Reservations",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_254"
+          },
+          {
+            "step": "step_254",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Noted! Your reservation is confirmed. 🎉 You’ll receive a reminder on "
+                          },
+                          {
+                            "skill_variable": "booking_day"
+                          },
+                          {
+                            "scalar": " afternoon. Have a great day, "
+                          },
+                          {
+                            "skill_variable": "cus_name"
+                          },
+                          {
+                            "scalar": "! 😊"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Explore options",
+                      "value": {
+                        "input": {
+                          "text": "Explore options"
+                        }
+                      }
+                    },
+                    {
+                      "label": "End conversation",
+                      "value": {
+                        "input": {
+                          "text": "End conversation"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "context": {
+              "variables": [
+                {
+                  "value": {
+                    "variable": "step_257"
+                  },
+                  "skill_variable": "cus_name"
+                },
+                {
+                  "value": {
+                    "variable": "step_191"
+                  },
+                  "skill_variable": "booking_day"
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_14752",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "replay",
+              "clear": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "variable": "step_507"
+                },
+                {
+                  "variable": "step_314"
+                },
+                {
+                  "variable": "step_355"
+                },
+                {
+                  "variable": "step_265"
+                },
+                {
+                  "variable": "step_191"
+                },
+                {
+                  "variable": "step_257"
+                },
+                {
+                  "variable": "step_798"
+                },
+                {
+                  "variable": "step_903"
+                },
+                {
+                  "variable": "step_415"
+                },
+                {
+                  "variable": "step_476"
+                },
+                {
+                  "variable": "step_509"
+                }
+              ]
+            },
+            "variable": "step_254",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "1️⃣ Reservations",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_619"
+          },
+          {
+            "step": "step_619",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Of course! Here’s the menu"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "title": "",
+                  "source": "https://b.zmtcdn.com/data/menus/057/18583057/706914391a9e32469678e9e54682f8a3.jpg",
+                  "alt_text": "Menu",
+                  "description": "Menu of desi Dhaba",
+                  "response_type": "image"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_619",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_940"
+                },
+                {
+                  "value": "2️⃣ Menu inquiries",
+                  "from_entity": "entity_42477"
+                }
+              ]
+            },
+            "next_step": "step_495"
+          },
+          {
+            "step": "step_495",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "😊 Let me know if you’d like to explore more options or place an order later. Have a great day!"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_495",
+            "next_step": "step_458"
+          },
+          {
+            "step": "step_458",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Got it! If you’d like, you can also pre-order any of these dishes to have them ready when you visit"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_458",
+            "next_step": "step_592"
+          },
+          {
+            "step": "step_592",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "You’re welcome! 😊 Let me know if you’d like to explore more options or place an order later. Have a great day!"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_592",
+            "condition": {
+              "exists": {
+                "variable": "step_458"
+              }
+            },
+            "next_step": "step_228"
+          },
+          {
+            "step": "step_228",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Hi "
+                          },
+                          {
+                            "skill_variable": "cus_name"
+                          },
+                          {
+                            "scalar": "! 🌟 We hope you are happy with our service at La Tablette\n\nWe’d love to hear your feedback. How would you rate your experience?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "1️⃣ \"5 – Excellent!\"",
+                      "value": {
+                        "input": {
+                          "text": "1️⃣ \"5 – Excellent!\""
+                        }
+                      }
+                    },
+                    {
+                      "label": "2️⃣ \"4 – Good.\" ",
+                      "value": {
+                        "input": {
+                          "text": "2️⃣ \"4 – Good.\" "
+                        }
+                      }
+                    },
+                    {
+                      "label": "3️⃣ \"3 – Average.\"",
+                      "value": {
+                        "input": {
+                          "text": "3️⃣ \"3 – Average.\""
+                        }
+                      }
+                    },
+                    {
+                      "label": "4️⃣ \"2 – Below Average.\"",
+                      "value": {
+                        "input": {
+                          "text": "4️⃣ \"2 – Below Average.\""
+                        }
+                      }
+                    },
+                    {
+                      "label": "5️⃣ \"1 – Poor.\"",
+                      "value": {
+                        "input": {
+                          "text": "5️⃣ \"1 – Poor.\""
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_1877",
+              "max_tries": 5
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_228",
+            "condition": {
+              "or": [
+                {
+                  "exists": {
+                    "variable": "step_254"
+                  }
+                },
+                {
+                  "exists": {
+                    "variable": "step_495"
+                  }
+                },
+                {
+                  "exists": {
+                    "variable": "step_592"
+                  }
+                }
+              ]
+            },
+            "next_step": "step_678"
+          },
+          {
+            "step": "step_678",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Thank you so much for the 5-star rating! 😊 We’re thrilled you had a great time.\n\nIf you have any specific feedback or suggestions, feel free to share"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "context": {
+              "variables": []
+            },
+            "handlers": [],
+            "question": {
+              "free_text": true
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_678",
+            "condition": {
+              "and": [
+                {
+                  "eq": [
+                    {
+                      "variable": "step_228"
+                    },
+                    {
+                      "value": "1️⃣ \"5 – Excellent!\"",
+                      "from_entity": "entity_1877"
+                    }
+                  ]
+                },
+                {
+                  "eq": [
+                    {
+                      "variable": "step_228"
+                    },
+                    {
+                      "value": "2️⃣ \"4 – Good.\" ",
+                      "from_entity": "entity_1877"
+                    }
+                  ]
+                },
+                {
+                  "eq": [
+                    {
+                      "variable": "step_228"
+                    },
+                    {
+                      "value": "3️⃣ \"3 – Average.\"",
+                      "from_entity": "entity_1877"
+                    }
+                  ]
+                },
+                {
+                  "eq": [
+                    {
+                      "variable": "step_228"
+                    },
+                    {
+                      "value": "4️⃣ \"2 – Below Average.\"",
+                      "from_entity": "entity_1877"
+                    }
+                  ]
+                },
+                {
+                  "eq": [
+                    {
+                      "variable": "step_228"
+                    },
+                    {
+                      "value": "5️⃣ \"1 – Poor.\"",
+                      "from_entity": "entity_1877"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "hii",
+        "action": "action_26277",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "intent": "action_26277_intent_1874"
+        },
+        "variables": [
+          {
+            "title": "Great! Let’s book your table. Are you reserving for today or ano",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_191",
+            "data_type": "date"
+          },
+          {
+            "title": "Hi {variable}! 🌟 We hope you are happy with our service at La T",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_228",
+            "data_type": "any"
+          },
+          {
+            "title": "Noted! Your reservation is confirmed. 🎉 You’ll receive a remind",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_254",
+            "data_type": "any"
+          },
+          {
+            "title": "Great! Can I have your name and contact number and for how many ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_257",
+            "data_type": "any"
+          },
+          {
+            "title": "Not a problem! Your current reservation remains unchanged. Let u",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_265",
+            "data_type": "any"
+          },
+          {
+            "title": "Done! Your reservation now includes premium seating for the live",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_314",
+            "data_type": "any"
+          },
+          {
+            "title": "Sure! Our live jazz night features a renowned local band and tak",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_355",
+            "data_type": "any"
+          },
+          {
+            "title": "Can you specify the time please...",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_415",
+            "data_type": "time"
+          },
+          {
+            "title": "Got it! If you’d like, you can also pre-order any of these dishe",
+            "privacy": {
+              "enabled": true
+            },
+            "variable": "step_458",
+            "data_type": "any"
+          },
+          {
+            "title": "Sorry! We have availability from 6:00 PM to 10:00 PM. What time ",
+            "privacy": {
+              "enabled": true
+            },
+            "variable": "step_476",
+            "data_type": "any"
+          },
+          {
+            "title": "😊 Let me know if you’d like to explore more options or place an",
+            "privacy": {
+              "enabled": true
+            },
+            "variable": "step_495",
+            "data_type": "any"
+          },
+          {
+            "title": "Hi {variable}! 🎉 We’re hosting a live jazz night on {variable} ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_507",
+            "data_type": "any"
+          },
+          {
+            "title": "Thank you, {variable} 🎉 Your table for {variable} at {variable}",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_509",
+            "data_type": "any"
+          },
+          {
+            "title": "You’re welcome! 😊 Let me know if you’d like to explore more opt",
+            "privacy": {
+              "enabled": true
+            },
+            "variable": "step_592",
+            "data_type": "any"
+          },
+          {
+            "title": "Of course! Here’s the menu",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_619",
+            "data_type": "any"
+          },
+          {
+            "title": "Thank you so much for the 5-star rating! 😊 We’re thrilled you h",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_678",
+            "data_type": "any"
+          },
+          {
+            "title": "can you specify your contact number please...",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_798",
+            "data_type": "any"
+          },
+          {
+            "title": "Can you specify the number of people please...",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_903",
+            "data_type": "number"
+          },
+          {
+            "title": "What would you like help with?",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_940",
+            "data_type": "any"
+          }
+        ],
+        "launch_mode": "learning",
+        "next_action": "fallback",
+        "topic_switch": {
+          "allowed_from": true,
+          "allowed_into": true,
+          "never_return": false
+        },
+        "disambiguation_opt_out": false
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_001",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I'm afraid I don't understand. Please rephrase your question."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "step_001",
+            "condition": {
+              "lte": [
+                {
+                  "system_variable": "no_action_matches_count"
+                },
+                {
+                  "scalar": 3
+                }
+              ]
+            },
+            "next_step": "step_002"
+          },
+          {
+            "step": "step_002",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "invoke_another_action_and_end",
+              "invoke_action": {
+                "action": "fallback",
+                "policy": "default",
+                "parameters": null,
+                "result_variable": "step_002_result_1"
+              }
+            },
+            "variable": "step_002",
+            "condition": {
+              "gt": [
+                {
+                  "system_variable": "no_action_matches_count"
+                },
+                {
+                  "scalar": 3
+                }
+              ]
+            }
+          }
+        ],
+        "title": "No matches",
+        "action": "anything_else",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "expression": "anything_else"
+        },
+        "variables": [
+          {
+            "title": "I am afraid I do not understand what you are asking, please re-p",
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "variable": "step_002",
+            "data_type": "any"
+          },
+          {
+            "variable": "step_002_result_1",
+            "data_type": "any"
+          }
+        ],
+        "disambiguation_opt_out": true
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "digression_failure",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Sorry I couldn't confirm if you wanted to return to previous topic, let me connect to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "digression_failure",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Failed to confirm topic return"
+                }
+              ]
+            },
+            "next_step": "step_001"
+          },
+          {
+            "step": "step_001",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I'm afraid I don't understand. I can connect you to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_001",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Step validation failed"
+                }
+              ]
+            },
+            "next_step": "step_002"
+          },
+          {
+            "step": "step_002",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Sorry I couldn't assist you. I will connect you to an agent right away."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_002",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Agent requested"
+                }
+              ]
+            },
+            "next_step": "step_003"
+          },
+          {
+            "step": "step_003",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I am afraid I do not understand what you are asking, let me connect you to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_003",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "No action matches"
+                }
+              ]
+            },
+            "next_step": "step_004"
+          },
+          {
+            "step": "step_004",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "It seems this conversation would be best managed by a human agent. Let me connect you to one of our agents."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_004",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Danger word detected"
+                }
+              ]
+            },
+            "next_step": "step_005"
+          },
+          {
+            "step": "step_005",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "It seems this conversation would be best managed by a human agent. Let me connect you to one of our agents."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_005",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Profanity detected"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Fallback",
+        "action": "fallback",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "intent": "fallback_connect_to_agent"
+        },
+        "variables": [
+          {
+            "title": "Topic return failed",
+            "variable": "digression_failure",
+            "data_type": "any"
+          },
+          {
+            "title": "I'm afraid I don't understand. I can connect you to an agent.",
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "title": "Sorry I couldn't assist you. I will connect you to an agent righ",
+            "variable": "step_002",
+            "data_type": "any"
+          },
+          {
+            "title": "I am afraid I do not understand what you are asking, let me conn",
+            "variable": "step_003",
+            "data_type": "any"
+          },
+          {
+            "title": "It seems this conversation would be best managed",
+            "variable": "step_004",
+            "data_type": "any"
+          },
+          {
+            "title": "Profanity - It seems this conversation",
+            "variable": "step_005",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "run_always",
+        "disambiguation_opt_out": true
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "danger_word_detected",
+            "title": "Connect to agent",
+            "handlers": [],
+            "resolver": {
+              "type": "fallback"
+            },
+            "variable": "danger_word_detected_variable",
+            "condition": {
+              "entity": "danger_words"
+            },
+            "next_step": "profanity_detected"
+          },
+          {
+            "step": "profanity_detected",
+            "title": "Show warning",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Please use appropriate language when interacting with the assistant."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "max_hits",
+                "handler": "max_hits_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "max_hits": 2,
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "profanity_detected_variable",
+            "condition": {
+              "entity": "profane_words"
+            }
+          }
+        ],
+        "title": "Trigger word detected",
+        "action": "run_always",
+        "boosts": [],
+        "handlers": [],
+        "variables": [
+          {
+            "title": "Profanity detected",
+            "variable": "danger_word_detected_variable",
+            "data_type": "any"
+          },
+          {
+            "title": "Profane word detected",
+            "variable": "profanity_detected_variable",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "anything_else"
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_001",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Hi there! 😊 Welcome to La Tablette. I’m here to assist you"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "invoke_another_action",
+              "invoke_action": {
+                "action": "action_26277",
+                "policy": "default",
+                "parameters": null,
+                "result_variable": "step_001_result_1"
+              }
+            },
+            "variable": "step_001"
+          }
+        ],
+        "title": "Greet customer",
+        "action": "welcome",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "expression": "welcome"
+        },
+        "variables": [
+          {
+            "title": "Hi there! 😊 Welcome to La Tablette. I’m here to assist you",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_001_result_1",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "action_26277",
+        "disambiguation_opt_out": true
+      }
+    ],
+    "intents": [
+      {
+        "intent": "action_26277_intent_1874",
+        "examples": [
+          {
+            "text": "Explore options"
+          },
+          {
+            "text": "good evening"
+          },
+          {
+            "text": "good morning"
+          },
+          {
+            "text": "hello"
+          },
+          {
+            "text": "hey there"
+          },
+          {
+            "text": "hii"
+          },
+          {
+            "text": "Inquiry"
+          },
+          {
+            "text": "i want to book table"
+          },
+          {
+            "text": "i want to reserve a table"
+          },
+          {
+            "text": "menu"
+          },
+          {
+            "text": "reservation"
+          }
+        ]
+      },
+      {
+        "intent": "fallback_connect_to_agent",
+        "examples": [
+          {
+            "text": "Agent help"
+          },
+          {
+            "text": "Call agent"
+          },
+          {
+            "text": "Can I connect to an agent?"
+          },
+          {
+            "text": "I would like to speak to a human"
+          },
+          {
+            "text": "I would like to speak to someone"
+          }
+        ],
+        "description": "Please transfer me to an agent"
+      }
+    ],
+    "entities": [
+      {
+        "entity": "danger_words",
+        "values": [],
+        "fuzzy_match": false
+      },
+      {
+        "entity": "entity_14752",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "End conversation",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Explore options",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_1877",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "1️⃣ \"5 – Excellent!\"",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "2️⃣ \"4 – Good.\" ",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "3️⃣ \"3 – Average.\"",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "4️⃣ \"2 – Below Average.\"",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "5️⃣ \"1 – Poor.\"",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_25093",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "1️⃣ \"Yes, upgrade my reservation.\" ",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "2️⃣ \"Tell me more about the event.\" ",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "3️⃣ \"No, thank you.\"",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_42477",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "1️⃣ Reservations",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "2️⃣ Menu inquiries",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "3️⃣ Special offers and events",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_7457",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "today",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "tomorrow",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "profane_words",
+        "values": [],
+        "fuzzy_match": false
+      },
+      {
+        "entity": "sys-date",
+        "values": []
+      },
+      {
+        "entity": "sys-number",
+        "values": []
+      },
+      {
+        "entity": "sys-time",
+        "values": []
+      },
+      {
+        "entity": "sys-yes-no",
+        "values": []
+      }
+    ],
+    "metadata": {
+      "api_version": {
+        "major_version": "v2",
+        "minor_version": "2018-11-08"
+      }
+    },
+    "variables": [
+      {
+        "title": "booking_day",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "booking_day",
+        "data_type": "date",
+        "description": "date fo booking the table"
+      },
+      {
+        "title": "contact_no",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "contact_no",
+        "data_type": "string",
+        "description": ""
+      },
+      {
+        "title": "cus_name",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "cus_name",
+        "data_type": "string",
+        "description": ""
+      },
+      {
+        "title": "day_booking",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "day_booking",
+        "data_type": "string",
+        "description": ""
+      },
+      {
+        "title": "num_people",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "num_people",
+        "data_type": "number",
+        "description": "the number of people to reserve a table",
+        "initial_value": {
+          "scalar": 1
+        }
+      },
+      {
+        "title": "people_with",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "people_with",
+        "data_type": "string",
+        "description": ""
+      },
+      {
+        "title": "rating",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "rating",
+        "data_type": "string",
+        "description": ""
+      },
+      {
+        "title": "table_no",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "table_no",
+        "data_type": "string",
+        "description": ""
+      },
+      {
+        "title": "time",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "time",
+        "data_type": "time",
+        "description": "its time when the customer wants table"
+      }
+    ],
+    "data_types": [
+      {
+        "title": "booking day",
+        "entity": "entity_7457",
+        "response": {
+          "options": [
+            {
+              "label": "today",
+              "value": {
+                "input": {
+                  "text": "today"
+                }
+              }
+            },
+            {
+              "label": "tomorrow",
+              "value": {
+                "input": {
+                  "text": "tomorrow"
+                }
+              }
+            }
+          ],
+          "response_type": "option"
+        },
+        "data_type": "data-type_23003"
+      }
+    ],
+    "collections": [],
+    "counterexamples": [],
+    "system_settings": {
+      "nlp": {
+        "model": "latest"
+      },
+      "variable": {
+        "format": {
+          "time": {
+            "pattern": "short"
+          },
+          "currency": {
+            "fraction_digits": 2
+          }
+        }
+      },
+      "off_topic": {
+        "enabled": true
+      },
+      "auto_learn": {
+        "apply": true
+      },
+      "launch_mode": {
+        "default": "learning",
+        "enabled": false,
+        "learning": {
+          "step_retry_threshold": 2,
+          "use_connect_to_support": "more_often",
+          "single_answer_clarification": "more_often",
+          "disambiguation_clarification": "more_often"
+        },
+        "confident": {
+          "step_retry_threshold": 4,
+          "use_connect_to_support": "sometimes",
+          "single_answer_clarification": "sometimes",
+          "disambiguation_clarification": "sometimes"
+        }
+      },
+      "topic_switch": {
+        "enabled": true,
+        "messages": {
+          "enable_confirmation": true,
+          "confirmation_failure": {
+            "generic": [
+              {
+                "values": [
+                  {
+                    "text_expression": {
+                      "concat": [
+                        {
+                          "scalar": "I'm sorry, I did not catch that, please confirm."
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "response_type": "text",
+                "selection_policy": "sequential"
+              }
+            ]
+          },
+          "confirmation_request": {
+            "generic": [
+              {
+                "values": [
+                  {
+                    "text_expression": {
+                      "concat": [
+                        {
+                          "scalar": "Do you want to continue with the previous topic: "
+                        },
+                        {
+                          "system_variable": "digressed_from"
+                        },
+                        {
+                          "scalar": "?"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "response_type": "text",
+                "selection_policy": "sequential"
+              },
+              {
+                "options": [
+                  {
+                    "label": "Yes",
+                    "value": {
+                      "input": {
+                        "text": "Yes"
+                      }
+                    }
+                  },
+                  {
+                    "label": "No",
+                    "value": {
+                      "input": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "response_type": "option",
+                "repeat_on_reprompt": true
+              }
+            ]
+          }
+        },
+        "max_tries": 3
+      },
+      "generative_ai": {
+        "model_id": "ibm/granite-3-8b-instruct",
+        "hap_filter": {
+          "output": {
+            "enabled": true
+          }
+        },
+        "slot_filling": {
+          "enabled": true
+        },
+        "general_purpose_answering": {
+          "enabled": false
+        }
+      },
+      "disambiguation": {
+        "prompt": "Did you mean:",
+        "enabled": true,
+        "randomize": true,
+        "max_suggestions": 5,
+        "suggestion_text_policy": "title",
+        "none_of_the_above_prompt": "None of the above",
+        "use_connect_to_support_prompt": "Connect to support",
+        "single_answer_clarification_prompt": "Something else"
+      },
+      "search_routing": {
+        "target": "conversational_search"
+      },
+      "spelling_auto_correct": false
+    },
+    "learning_opt_out": false
+  },
+  "description": "created for assistant beb66e55-9289-4b41-a42e-de94500f90db",
+  "assistant_id": "beb66e55-9289-4b41-a42e-de94500f90db",
+  "workspace_id": "c11c10fd-9508-4693-91c6-907f54959bca",
+  "dialog_settings": {},
+  "next_snapshot_version": "3",
+  "environment_id": "cc129994-701d-4579-82ee-b41a00cca2f0"
+}
